@@ -1,11 +1,18 @@
 import React from 'react'
 import styles from './Register.module.css';
 import { useFormik } from 'formik';
-
+import * as yap from 'yup'
 export default function Register() {
   function handelRegister(values){
     console.log(values);
   }
+  let validationSchema = yap.object({
+    name:yap.string().required("name is required").min(3,'min length is 3').max(10,'max lenght is 10'),
+    email:yap.string().required("email is required").email('email is not valid'),
+    password:yap.string().required("password is required").matches(/^[A-Z][a-z0-9]{5,10}$/,'password must start with upper case ...'),
+    rePassword:yap.string().required("rePassword is required").oneOf([yap.ref('password','not confirm password')]),
+    phone:yap.string().required("phone is required").matches(/^01[0125][0-9]{8}$/,'phone number must be 11 number')
+  })
   let formik =useFormik({
     initialValues:{
       name:'',
@@ -14,6 +21,7 @@ export default function Register() {
       password:'',
       rePassword :''
     },
+    validationSchema,
     onSubmit:handelRegister
   })
   
