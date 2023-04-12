@@ -1,12 +1,13 @@
 import React from 'react'
 import styles from './Navbar.module.css';
 import Logo from '../../assets/freshcart.png'
+import { Link } from 'react-router-dom';
 export default function Navbar() {
   return (
   <>
   <nav className="navbar navbar-expand-sm navbar-light bg-light">
       <div className="container">
-      <a className="navbar-brand" href="#"><img className='w-50' src={Logo}/></a>
+      <Link className="navbar-brand" to="/"><img className='w-50' src={Logo}/></Link>
       <button className="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
@@ -15,19 +16,19 @@ export default function Navbar() {
         <ul className="navbar-nav me-auto mt-2 mt-lg-0">
           
           <li className="nav-item">
-            <a className="nav-link" href="#">Home</a>
+            <Link className="nav-link" to="/">Home</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Cart</a>
+            <Link className="nav-link" to="cart">Cart</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Products</a>
+            <Link className="nav-link" to="products">Products</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Categories</a>
+            <Link className="nav-link" to="categories">Categories</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Brands</a>
+            <Link className="nav-link" to="brands">Brands</Link>
           </li>
         </ul>
         <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
@@ -38,13 +39,13 @@ export default function Navbar() {
            
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Login</a>
+            <Link className="nav-link" to="login">Login</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Register</a>
+            <Link className="nav-link" to="sigin">Register</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Logout</a>
+            <Link className="nav-link" >Logout</Link>
           </li>
         </ul>
       </div>
