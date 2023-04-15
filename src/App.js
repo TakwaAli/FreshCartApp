@@ -11,7 +11,7 @@ import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Categories from './Components/Categories/Categories';
 import Notfound from './Components/Notfound/Notfound';
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import ProtectedRouting from './Components/ProtectedRouting/ProtectedRouting';
@@ -24,8 +24,13 @@ function App() {
  let decodedToken = jwtDecode(encodedToken);
  setuserData(decodedToken);
   }
+  function logout() {
+    setuserData(null)
+    localStorage.removeItem('userToken');
+    Navigate('/login')
+  }
   let router =createBrowserRouter([{
-    path:"",element:<Layout userData={userData}/>,children:[
+    path:"",element:<Layout logout={logout} userData={userData}/>,children:[
       {index:true,element: <ProtectedRouting><Home/></ProtectedRouting> },
       {path:"cart",element:<ProtectedRouting><Cart/></ProtectedRouting> },
       {path:"categories",element: <ProtectedRouting><Categories/></ProtectedRouting> },

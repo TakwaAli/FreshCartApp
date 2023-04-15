@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './Navbar.module.css';
 import Logo from '../../assets/freshcart.png'
 import { Link } from 'react-router-dom';
-export default function Navbar({userData}) {
+export default function Navbar({userData ,logout}) {
   /*   const logout = () => {
     localStorage.removeItem('userToken');
     Navigate('/login')
@@ -51,7 +51,7 @@ export default function Navbar({userData}) {
             <Link className="nav-link" to="sigin">Register</Link>
           </li>
           </> :  <li className="nav-item">
-            <Link className="nav-link" >Logout</Link>
+            <Link className="nav-link" onClick={logout} >Logout</Link>
           </li>}
         
         </ul>

@@ -58,7 +58,7 @@ const [massageerror, setmassageerror] = useState('')
       <label htmlFor="password">password</label>
       <input className='form-control mb-2' onChange={formik.handleChange} value={formik.values.password} type="password" id='password' name='password'/>
       {formik.errors.password && formik.touched ? <div className='alert alert-danger'>{formik.errors.password}</div>:null}
-      {isLooding ? <button  type='button' className='btn bg-main text-white' ><i className='fas fa-spinner fa-spin'></i></button>:<button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white' >Register</button>} 
+      {isLooding ? <button  type='button' className='btn bg-main text-white' ><i className='fas fa-spinner fa-spin'></i></button>:<button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white' >Login</button>} 
       
     </form>
   </div>
