@@ -2,7 +2,11 @@ import React from 'react'
 import styles from './Navbar.module.css';
 import Logo from '../../assets/freshcart.png'
 import { Link } from 'react-router-dom';
-export default function Navbar() {
+export default function Navbar({userData}) {
+  /*   const logout = () => {
+    localStorage.removeItem('userToken');
+    Navigate('/login')
+}; */
   return (
   <>
   <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -13,7 +17,7 @@ export default function Navbar() {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="collapsibleNavId">
-        <ul className="navbar-nav me-auto mt-2 mt-lg-0">
+        {userData !== null ? <ul className="navbar-nav me-auto mt-2 mt-lg-0">
           
           <li className="nav-item">
             <Link className="nav-link" to="/">Home</Link>
@@ -30,7 +34,8 @@ export default function Navbar() {
           <li className="nav-item">
             <Link className="nav-link" to="brands">Brands</Link>
           </li>
-        </ul>
+        </ul> : null}
+       
         <ul className="navbar-nav ms-auto mt-2 mt-lg-0">
           <li  className="nav-item d-flex align-items-center">
            <i className='fab mx-2 fa-facebook'></i>
@@ -38,15 +43,17 @@ export default function Navbar() {
            <i className='fab mx-2 fa-twitter'></i>
            
           </li>
+          {userData===null?  <>
           <li className="nav-item">
             <Link className="nav-link" to="login">Login</Link>
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="sigin">Register</Link>
           </li>
-          <li className="nav-item">
+          </> :  <li className="nav-item">
             <Link className="nav-link" >Logout</Link>
-          </li>
+          </li>}
+        
         </ul>
       </div>
     </div>

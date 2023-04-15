@@ -12,17 +12,27 @@ import Categories from './Components/Categories/Categories';
 import Notfound from './Components/Notfound/Notfound';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { useState } from 'react';
+import jwtDecode from 'jwt-decode';
+import ProtectedRouting from './Components/ProtectedRouting/ProtectedRouting';
 
 function App() {
+  const [userData, setuserData] = useState(null);
+
+  function saveuserData() {
+  let encodedToken=  localStorage.getItem("userToken");
+ let decodedToken = jwtDecode(encodedToken);
+ setuserData(decodedToken);
+  }
   let router =createBrowserRouter([{
-    path:"",element:<Layout/>,children:[
-      {index:true,element: <Home/>},
-      {path:"cart",element: <Cart/>},
-      {path:"categories",element: <Categories/>},
-      {path:"products",element: <Products/>},
-      {path:"productDetails",element: <ProductDetails/>},
-      {path:"about",element: <About/>},
-      {path:"login",element: <Login/>},
+    path:"",element:<Layout userData={userData}/>,children:[
+      {index:true,element: <ProtectedRouting><Home/></ProtectedRouting> },
+      {path:"cart",element:<ProtectedRouting><Cart/></ProtectedRouting> },
+      {path:"categories",element: <ProtectedRouting><Categories/></ProtectedRouting> },
+      {path:"products",element: <ProtectedRouting><Products/></ProtectedRouting>},
+      {path:"productDetails",element:<ProtectedRouting><ProductDetails/></ProtectedRouting> },
+      {path:"about",element:<ProtectedRouting><About/></ProtectedRouting> },
+      {path:"login",element: <Login saveuserData={saveuserData}/>},
       {path:"sigin",element: <Register/>},
       {path:"*",element: <Notfound/>},
     ]
