@@ -3,7 +3,7 @@ import styles from './Login.module.css';
 import { useFormik } from 'formik';
 import * as yap from 'yup'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Login({saveuserData}) {
 let navigate=useNavigate();
@@ -61,6 +61,7 @@ const [massageerror, setmassageerror] = useState('')
       {isLooding ? <button  type='button' className='btn bg-main text-white' ><i className='fas fa-spinner fa-spin'></i></button>:<button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white' >Login</button>} 
       
     </form>
+    <Link to="/forgitpassword">Forgitpassword..?</Link>
   </div>
   </>
   )

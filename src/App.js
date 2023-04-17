@@ -10,7 +10,7 @@ import About from './Components/About/About';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Categories from './Components/Categories/Categories';
 import Notfound from './Components/Notfound/Notfound';
-
+import ForgitPassword from'./Components/ForgitPassword/ForgitPassword';
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import jwtDecode from 'jwt-decode';
@@ -37,6 +37,7 @@ function App() {
       {path:"products",element: <ProtectedRouting><Products/></ProtectedRouting>},
       {path:"productDetails",element:<ProtectedRouting><ProductDetails/></ProtectedRouting> },
       {path:"about",element:<ProtectedRouting><About/></ProtectedRouting> },
+      {path:"forgitpassword",element:<ForgitPassword></ForgitPassword>},
       {path:"login",element: <Login saveuserData={saveuserData}/>},
       {path:"sigin",element: <Register/>},
       {path:"*",element: <Notfound/>},
