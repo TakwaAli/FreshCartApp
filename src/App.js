@@ -11,6 +11,7 @@ import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Categories from './Components/Categories/Categories';
 import Notfound from './Components/Notfound/Notfound';
 import ForgitPassword from'./Components/ForgitPassword/ForgitPassword';
+import RestPassword from'./Components/RestPassword/RestPassword';
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import jwtDecode from 'jwt-decode';
@@ -38,6 +39,8 @@ function App() {
       {path:"productDetails",element:<ProtectedRouting><ProductDetails/></ProtectedRouting> },
       {path:"about",element:<ProtectedRouting><About/></ProtectedRouting> },
       {path:"forgitpassword",element:<ForgitPassword></ForgitPassword>},
+      {path:"restPasword",element:<RestPassword></RestPassword>},
+      
       {path:"login",element: <Login saveuserData={saveuserData}/>},
       {path:"sigin",element: <Register/>},
       {path:"*",element: <Notfound/>},
