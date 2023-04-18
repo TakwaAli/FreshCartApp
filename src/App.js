@@ -39,7 +39,7 @@ function App() {
       {path:"productDetails",element:<ProtectedRouting><ProductDetails/></ProtectedRouting> },
       {path:"about",element:<ProtectedRouting><About/></ProtectedRouting> },
       {path:"forgitpassword",element:<ForgitPassword></ForgitPassword>},
-      {path:"restPasword",element:<RestPassword></RestPassword>},
+      {path:"restPasword",element:<RestPassword saveuserData={saveuserData}></RestPassword>},
       
       {path:"login",element: <Login saveuserData={saveuserData}/>},
       {path:"sigin",element: <Register/>},

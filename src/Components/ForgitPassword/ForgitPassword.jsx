@@ -40,6 +40,7 @@ let validationSchema = yap.object({
   console.log(data);
   if (data.status=="success") {
    //navigate to restet
+   console.log("resetsuccuss");
    navigate("/restPasword")
   }
 }
@@ -73,11 +74,11 @@ let validationSchema = yap.object({
     
     <form onSubmit={formik2.handleSubmit}>
     <label htmlFor="resetCode">Rest code</label>
-      <input className='form-control mb-2' onChange={formik.handleChange} value={formik.values.resetCode} type="text" id='resetCode' name='resetCode'/>
+      <input className='form-control mb-2' onChange={formik2.handleChange} value={formik2.values.resetCode} type="text" id='resetCode' name='resetCode'/>
       {/* {formik.errors.resetCode && formik.touched ? <div className='alert alert-danger'>{formik.errors.resetCode}</div>:null}
  */}
       
-      {isLooding ? <button  type='button' className='btn bg-main text-white' ><i className='fas fa-spinner fa-spin'></i></button>:<button disabled={!(formik.isValid && formik.dirty)} type='submit' className='btn bg-main text-white' >Reset Code </button>} 
+      {isLooding ? <button  type='button' className='btn bg-main text-white' ><i className='fas fa-spinner fa-spin'></i></button>:<button disabled={!(formik2.isValid && formik2.dirty)} type='submit' className='btn bg-main text-white' >Reset Code </button>} 
       
     </form>
     
