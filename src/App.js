@@ -36,7 +36,7 @@ function App() {
       {path:"cart",element:<ProtectedRouting><Cart/></ProtectedRouting> },
       {path:"categories",element: <ProtectedRouting><Categories/></ProtectedRouting> },
       {path:"products",element: <ProtectedRouting><Products/></ProtectedRouting>},
-      {path:"productDetails",element:<ProtectedRouting><ProductDetails/></ProtectedRouting> },
+      {path:"productDetails/:_id",element:<ProtectedRouting><ProductDetails/></ProtectedRouting> },
       {path:"about",element:<ProtectedRouting><About/></ProtectedRouting> },
       {path:"forgitpassword",element:<ForgitPassword></ForgitPassword>},
       {path:"restPasword",element:<RestPassword saveuserData={saveuserData}></RestPassword>},
