@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import styles from './Cart.module.css';
 import { cartContext } from '../../Context/CartContext';
+import { toast } from 'react-hot-toast';
 
 export default function Cart() {
 
   const [CartDetails, setCartDetails] = useState(null)
-  let {getLockedUserCart} = useContext(cartContext)
+  let {getLockedUserCart,removeItem} = useContext(cartContext)
 
   async function getCart() {
     let response= await getLockedUserCart()
@@ -16,6 +17,11 @@ export default function Cart() {
     
   }
 
+  async function remove(product_id) {
+    let response= await removeItem(product_id)
+    setCartDetails(response.data.data)
+    toast("product delete from cart")
+  }
   useEffect(async () => {
     
     getCart();
@@ -27,7 +33,7 @@ export default function Cart() {
   {CartDetails !== null ? <div className='bg-main-light p-4 my-4'>
     <h3>Shop Cart :</h3>
     <h6>Total Cart Price :{CartDetails.totalCartPrice}</h6>
-    {(CartDetails.products)?.map((product)=><div className='row'>
+    {(CartDetails.products)?.map((product)=><div key={product.product._id} className='row'>
 
     <div className='col-md-1'>
 <img src={product.product.imageCover} className='w-100' alt="" />
@@ -36,7 +42,7 @@ export default function Cart() {
      <div>
      <h6>{product.product.title}</h6>
      <h6 className='text-main'>price: {product.price}</h6>
-     <button className='btn m-0 p-z'><i className='fa-regular fa-trash-can text-danger'></i> Remove</button>
+     <button onClick={()=>remove(product.product._id)} className='btn m-0 p-z'><i className='fa-regular fa-trash-can text-danger'></i> Remove</button>
      </div>
      <div>
       <button className='btn border-main btn-sm'>+</button>

@@ -30,7 +30,15 @@ export function CartContextProvider(props){
          
       }
 
-    return <cartContext.Provider value={{addToCart,getLockedUserCart}} >
+      function removeItem(product_id) {
+        return axios.delete(`https://route-ecommerce.onrender.com/api/v1/cart/${product_id}`,
+          {headers:header})
+          .then((response)=>response)
+          .catch((error)=>error)
+         
+      }
+
+    return <cartContext.Provider value={{addToCart,getLockedUserCart,removeItem}} >
 
         {props.children}
     </cartContext.Provider>
