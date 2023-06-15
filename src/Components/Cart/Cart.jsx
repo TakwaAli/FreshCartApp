@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 export default function Cart() {
 
   const [CartDetails, setCartDetails] = useState(null)
-  let {getLockedUserCart,removeItem} = useContext(cartContext)
+  let {getLockedUserCart,removeItem,updateCart} = useContext(cartContext)
 
   async function getCart() {
     let response= await getLockedUserCart()
@@ -21,6 +21,11 @@ export default function Cart() {
     let response= await removeItem(product_id)
     setCartDetails(response.data.data)
     toast("product delete from cart")
+  }
+  async function updateCartQuantity(product_id,count) {
+    let response= await updateCart(product_id ,count)
+    setCartDetails(response.data.data)
+    toast("product Quntatity updated")
   }
   useEffect(async () => {
     
@@ -45,9 +50,9 @@ export default function Cart() {
      <button onClick={()=>remove(product.product._id)} className='btn m-0 p-z'><i className='fa-regular fa-trash-can text-danger'></i> Remove</button>
      </div>
      <div>
-      <button className='btn border-main btn-sm'>+</button>
+      <button onClick={()=>updateCartQuantity(product.product._id,product.count+1)} className='btn border-main btn-sm'>+</button>
       <span className='mx-2'>{product.count}</span>
-      <button className='btn border-main btn-sm'>-</button>
+      <button onClick={()=>updateCartQuantity(product.product._id,product.count-1)} className='btn border-main btn-sm'>-</button>
      </div>
     </div>
 
