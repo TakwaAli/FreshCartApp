@@ -43,6 +43,7 @@ function App() {
       {path:"restPasword",element:<RestPassword saveuserData={saveuserData}></RestPassword>},
       
       {path:"login",element: <Login saveuserData={saveuserData}/>},
+      {path:"FreshCartApp",element: <Login saveuserData={saveuserData}/>},
       {path:"sigin",element: <Register/>},
       {path:"*",element: <Notfound/>},
     ]
